@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Notes Sharing</title>
+</head>
+<body>
+    <h1>Student Notes Sharing Website</h1>
+
+    <!-- Search form -->
+    <form action="/search" method="get">
+        <input type="text" name="query" placeholder="Search by subject" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Upload notes button -->
+    <a href="/upload">Upload Notes</a>
+
+    <!-- Notes list -->
+    <ul>
+        {% for note in notes %}
+            <li>
+                <strong>{{note.subject}}</strong> - Semester {{note.semester}}
+                <a href="/uploads/{{note.filename}}" download>Download</a>
+            </li>
+        {% else %}
+            <li>No notes found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
